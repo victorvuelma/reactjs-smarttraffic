@@ -1,0 +1,15 @@
+#trafficlights {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+}
+
+#trafficlights .content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
