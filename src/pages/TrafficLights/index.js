@@ -11,9 +11,9 @@ export default class TrafficLights extends Component {
             <h2>Semaforos</h2>
 
             <div className='content'>
-              <TrafficLight name='Av. Paulista - A'/>
-              <TrafficLight name='Av. Paulista - B'/>
-              <TrafficLight name='Rua Bela Cintra'/>
+              <TrafficLight name='Av. Paulista - A' slug='paulista_a' />
+              <TrafficLight name='Av. Paulista - B' slug='paulista_b' />
+              <TrafficLight name='Rua Bela Cintra' slug='bela_cintra' />
             </div>
         </div>
     );

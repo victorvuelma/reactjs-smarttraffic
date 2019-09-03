@@ -1,29 +1,44 @@
+import React, { Component } from 'react'
 
-import React, { Component } from 'react';
+import socket from 'socket.io-client'
 
-import './style.css';
+import './style.css'
 
 export default class TrafficLight extends Component {
-
   state = {
-    name: ''
+    name: '',
+    slug: '',
+    state: 'NONE'
   }
 
   componentDidMount() {
-    this.setState({ name: this.props.name })
+    this.setState({
+      name: this.props.name,
+      slug: this.props.slug
+    })
+
+    const io = socket('https://vv-smarttraffic.herokuapp.com/:8080')
+
+    io.emit('connectTraffic', this.props.slug)
+
+    io.on('change_state', data => {
+      this.setState({state : data})
+    })
   }
 
   render() {
+    const { state } = this.state
+
     return (
-      <div id='trafficlight'>
+      <div id="trafficlight">
         <p>{this.state.name}</p>
 
-        <div className='lights'>
-          <span className='red active'></span>
-          <span className='yellow'></span>
-          <span className='green'></span>
+        <div className="lights">
+          <span className={state === 'CLOSED' ? 'red active' : 'red'} />
+          <span className={(state === 'OPENING' || state === 'CLOSING') ? 'yellow active' : 'yellow'} />
+          <span className={state === 'OPEN' ? 'green active' : 'green'} />
         </div>
       </div>
-    );
+    )
   }
 }
