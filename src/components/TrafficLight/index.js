@@ -8,21 +8,35 @@ export default class TrafficLight extends Component {
   state = {
     name: '',
     slug: '',
-    state: 'NONE'
+    state: 'NONE',
   }
 
   componentDidMount() {
     this.setState({
       name: this.props.name,
-      slug: this.props.slug
+      slug: this.props.slug,
     })
 
-    const io = socket('https://vv-smarttraffic.herokuapp.com/:8080')
+    this.io = socket('http://localhost:8000')
 
-    io.emit('connectTraffic', this.props.slug)
+    this.io.emit('connectTraffic', this.props.slug)
 
-    io.on('change_state', data => {
-      this.setState({state : data})
+    this.io.on('change_state', data => {
+      this.setState({ state: data })
+    })
+  }
+
+  handleClose = () => {
+    this.io.emit('alterState', {
+      slug: this.props.slug,
+      state: 'close',
+    })
+  }
+
+  handleOpen = () => {
+    this.io.emit('alterState', {
+      slug: this.props.slug,
+      state: 'open',
     })
   }
 
@@ -34,9 +48,11 @@ export default class TrafficLight extends Component {
         <p>{this.state.name}</p>
 
         <div className="lights">
-          <span className={state === 'CLOSED' ? 'red active' : 'red'} />
-          <span className={(state === 'OPENING' || state === 'CLOSING') ? 'yellow active' : 'yellow'} />
-          <span className={state === 'OPEN' ? 'green active' : 'green'} />
+          <span onClick={this.handleClose} className={state === 'CLOSED' ? 'red active' : 'red'} />
+          <span
+            className={state === 'OPENING' || state === 'CLOSING' ? 'yellow active' : 'yellow'}
+          />
+          <span onClick={this.handleOpen} className={state === 'OPEN' ? 'green active' : 'green'} />
         </div>
       </div>
     )
