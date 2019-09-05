@@ -17,7 +17,7 @@ export default class TrafficLight extends Component {
       slug: this.props.slug,
     })
 
-    this.io = socket('http://localhost:8000')
+    this.io = socket('https://node-smarttraffic.herokuapp.com/')
 
     this.io.emit('connectTraffic', this.props.slug)
 
