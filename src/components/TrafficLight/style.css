@@ -1,56 +1,56 @@
 #trafficlight {
-  width: 300px;
-  height: 300px;
-  background-color: #fff;
+	width: 300px;
+	height: 300px;
+	background-color: #fff;
 
-  margin: 10px 20px;
-  
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
+	margin: 10px 20px;
+
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
 }
 
-#trafficlight p{
-  font-size: 20px;
-  font-weight: bold;
+#trafficlight p {
+	font-size: 20px;
+	font-weight: bold;
 }
 
 #trafficlight .lights {
-  height: 200px;
+	height: 200px;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
 
-  padding: 15px;
-  background-color: #c3c3c3;
+	padding: 15px;
+	background-color: #3c3c3c;
 }
 
 #trafficlight .lights span {
-  width: 50px;
-  height: 50px;
-  display: block;
-  border-radius: 25px;
+	width: 50px;
+	height: 50px;
+	display: block;
+	border-radius: 25px;
 }
 
 #trafficlight .lights .red {
-  background-color: red;
+	background-color: #cc3232;
 }
 
 #trafficlight .lights .yellow {
-  background-color: yellow;
+	background-color: #e7b416;
 }
 
 #trafficlight .lights .green {
-  background-color: green;
+	background-color: #2dc937;
 }
 
 #trafficlight .lights span {
-  opacity: 0.4;
+	opacity: 0.25;
 }
 
 #trafficlight .lights .active {
-  opacity: 1.0;
+	opacity: 1.0;
 }
