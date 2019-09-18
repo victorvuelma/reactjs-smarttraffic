@@ -21,8 +21,10 @@ export default class TrafficLight extends Component {
 
     this.io.emit('connectTraffic', this.props.slug)
 
-    this.io.on('change_state', data => {
-      this.setState({ state: data })
+    this.io.on('change_state', payload => {
+      this.setState({
+		  state: payload.state
+	   })
     })
   }
 
