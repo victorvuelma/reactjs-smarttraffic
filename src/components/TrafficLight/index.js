@@ -50,9 +50,9 @@ export default class TrafficLight extends Component {
         <p>{this.state.name}</p>
 
         <div className="lights">
-          <span onClick={this.handleClose} className={state === 'CLOSED' ? 'red active' : 'red'} />
+          <span onClick={this.handleClose} className={state === 'OPENING' || state === 'CLOSED' ? 'red active' : 'red'} />
           <span
-            className={state === 'OPENING' || state === 'CLOSING' ? 'yellow active' : 'yellow'}
+            className={state === 'CLOSING' ? 'yellow active' : 'yellow'}
           />
           <span onClick={this.handleOpen} className={state === 'OPEN' ? 'green active' : 'green'} />
         </div>
